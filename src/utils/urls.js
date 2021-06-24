@@ -18,6 +18,15 @@ function isUrlAnAnchor(url) {
 }
 
 /**
+ * Checks if url has a query string
+ * @param url
+ * @returns {boolean}
+ */
+function hasQueryString(url) {
+    return url.includes('?');
+}
+
+/**
  * Generates current date (as today) with yyy-mm-dd format
  * @returns {string}
  */
