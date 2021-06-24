@@ -76,7 +76,7 @@ async function run() {
     }
 
     console.log('Process finished, check folder for sitemap.xml ❤!');
-    process.exit(1);
+    process.exit(0);
 }
 
 
