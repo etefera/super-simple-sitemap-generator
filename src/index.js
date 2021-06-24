@@ -16,7 +16,7 @@ program
     .option('-w, --wait <miliseconds>', 'specify the time to wait before starting to parse the page (for CSR pages) (default 1500)', 1500)
     //.option('--no-deep <boolean>', 'blocks the iterators so only parses main urls, and not the ones found inside of them', false)
     .option('-l, --limit <number>', 'specify the limit of urls to parse', 99999)
-    .option('-q, --query <boolean>', 'include links with a query string', true);
+    .option('-q, --query', 'include links with a query string', true);
 
 
 program.on('--help', () => {
