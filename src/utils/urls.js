@@ -50,5 +50,6 @@ function getDate() {
 module.exports = UrlUtils = {
     urlContainsPage,
     isUrlAnAnchor,
+    hasQueryString,
     getDate,
 };
