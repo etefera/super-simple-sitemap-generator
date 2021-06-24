@@ -15,7 +15,8 @@ program
     .command('sitemap', 'Starts parsing the url.')
     .option('-w, --wait <miliseconds>', 'specify the time to wait before starting to parse the page (for CSR pages) (default 1500)', 1500)
     //.option('--no-deep <boolean>', 'blocks the iterators so only parses main urls, and not the ones found inside of them', false)
-    .option('-l, --limit <number>', 'specify the limit of urls to parse', 99999);
+    .option('-l, --limit <number>', 'specify the limit of urls to parse', 99999)
+    .option('-q, --query <boolean>', 'include links with a query string', true);
 
 
 program.on('--help', () => {
@@ -33,7 +34,7 @@ async function run() {
         throw 'One parameter (url to parse) is required. For more info write sitemap --help.';
     }
 
-    const mapper = new Sitemapper(program.wait, program.limit, ...program.args);
+    const mapper = new Sitemapper(program.wait, program.limit, program.query, ...program.args);
     await mapper.init();
 
     await Promise.all(mapper.baseUrls.map(async url => {
