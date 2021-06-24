@@ -8,9 +8,10 @@ class Sitemapper {
     /**
      * @param wait number
      * @param limit number
+     * @param includeQueryString boolean
      * @param urls array
      */
-    constructor(wait, limit, ...urls) {
+    constructor(wait, limit, includeQueryString, ...urls) {
         /**
          * @type {*[]} of urls
          */
@@ -31,6 +32,10 @@ class Sitemapper {
          * Milliseconds to wait on each parse for fetches and so to complete
          */
         this.limit = parseInt(limit);
+        /**
+         * Include URLs with a query string.
+         */
+        this.includeQueryString = includeQueryString;
         /**
          * puppeteer current open page
          * @type {null}
@@ -100,8 +105,8 @@ class Sitemapper {
                 })
             ), ...this.urls];
 
-            this.removeRepeatedUrls();
             this.filterUrls();
+            this.removeRepeatedUrls();
             this.removeUrlFromUrls(url);
             this.parsedUrls.push(url);
             this.removeParsedUrlsFromUrls();
@@ -157,6 +162,9 @@ class Sitemapper {
      */
     filterUrls() {
         this.urls = this.urls.filter((url) => UrlUtils.urlContainsPage(url, this.baseUrls[0]) && !UrlUtils.isUrlAnAnchor(url));
+        if (!this.includeQueryString) {
+            this.urls = this.urls.filter((url) => !UrlUtils.hasQueryString(url));
+        }
     }
 }
 
