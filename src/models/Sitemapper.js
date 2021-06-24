@@ -35,7 +35,7 @@ class Sitemapper {
         /**
          * Include URLs with a query string.
          */
-        this.includeQueryString = includeQueryString;
+        this.includeQueryString = includeQueryString.toString() === "true";
         /**
          * puppeteer current open page
          * @type {null}
