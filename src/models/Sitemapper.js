@@ -35,7 +35,7 @@ class Sitemapper {
         /**
          * Include URLs with a query string.
          */
-        this.includeQueryString = includeQueryString.toString() === "true";
+        this.includeQueryString = includeQueryString;
         /**
          * puppeteer current open page
          * @type {null}
@@ -162,7 +162,7 @@ class Sitemapper {
      */
     filterUrls() {
         this.urls = this.urls.filter((url) => UrlUtils.urlContainsPage(url, this.baseUrls[0]) && !UrlUtils.isUrlAnAnchor(url));
-        if (!this.includeQueryString) {
+        if (this.includeQueryString.toString() != "true") {
             this.urls = this.urls.filter((url) => !UrlUtils.hasQueryString(url));
         }
     }
