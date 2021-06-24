@@ -58,7 +58,7 @@ async function run() {
             console.log(`Parsing ${mapper.urls[0]}...`);
             await mapper.parse(mapper.urls[0]);
         } catch (error) {
-            mapper.errors.push(`${mapper.urls[0]} could not be parsed!`)
+            mapper.errors.push(`${mapper.urls[0]} could not be parsed! ${error}`)
         }
     }
 
