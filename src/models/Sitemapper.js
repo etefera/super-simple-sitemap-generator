@@ -162,7 +162,7 @@ class Sitemapper {
      */
     filterUrls() {
         this.urls = this.urls.filter((url) => UrlUtils.urlContainsPage(url, this.baseUrls[0]) && !UrlUtils.isUrlAnAnchor(url));
-        if (this.includeQueryString.toString() != "true") {
+        if (!this.includeQueryString) {
             this.urls = this.urls.filter((url) => !UrlUtils.hasQueryString(url));
         }
     }
